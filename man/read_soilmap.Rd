@@ -17,15 +17,6 @@ read_soilmap(
 )
 }
 \arguments{
-\item{file}{The absolute or relative file path of the \emph{processed} data
-source \code{soilmap_simple}.
-Used only if \code{use_processed = TRUE} (= default).
-The default value follows the data management advice in the
-vignette on data storage (run \code{vignette("v020_datastorage")}).
-It uses the first \code{n2khab_data} folder that is found when
-sequentially climbing up 0 to 10 levels in the file system hierarchy,
-starting from the working directory.}
-
 \item{file_raw}{Same as \code{file}, to define the filepath of the \emph{raw}
 datasource \code{soilmap}.
 Used only if \code{use_processed = FALSE}.}

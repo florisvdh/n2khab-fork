@@ -44,14 +44,6 @@
 #'
 #' @md
 #'
-#' @param file The absolute or relative file path of the _processed_ data
-#' source `soilmap_simple`.
-#' Used only if \code{use_processed = TRUE} (= default).
-#' The default value follows the data management advice in the
-#' vignette on data storage (run \code{vignette("v020_datastorage")}).
-#' It uses the first \code{n2khab_data} folder that is found when
-#' sequentially climbing up 0 to 10 levels in the file system hierarchy,
-#' starting from the working directory.
 #' @param file_raw Same as `file`, to define the filepath of the _raw_
 #' datasource `soilmap`.
 #' Used only if \code{use_processed = FALSE}.
