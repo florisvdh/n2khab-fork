@@ -34,6 +34,8 @@ jobs:
 
       - name: Install system dependencies
         run: |
+          sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+          sudo apt-get update
           while read -r cmd
           do
             eval sudo $cmd
@@ -53,4 +55,4 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+          Rscript -e 'options(rmarkdown.html_vignette.check_title = FALSE); pkgdown::deploy_to_branch(new_process = FALSE)'
