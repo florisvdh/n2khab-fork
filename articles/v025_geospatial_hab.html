@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">n2khab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -376,7 +376,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>area_type <span class="op">=</span> <span class="va">area</span> <span class="op">*</span> <span class="va">phab</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tidyverse.html">summarise</a></span><span class="op">(</span>area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">area_type</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-                    <span class="fu"><a href="https://rdrr.io/pkg/units/man/set_units.html">set_units</a></span><span class="op">(</span><span class="st">"ha"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                    <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html">set_units</a></span><span class="op">(</span><span class="st">"ha"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
                     <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
             <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 101 x 2</span>
@@ -528,7 +528,7 @@
             max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span>
             <span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches</a></span><span class="op">(</span><span class="st">"area|max"</span><span class="op">)</span><span class="op">)</span>, 
-            <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/set_units.html">set_units</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
+            <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html">set_units</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 8</span>
 <span class="co">#&gt;   type     nr_watersurfaces total_area area_min area_Q1 area_Q2 area_Q3     max</span>
 <span class="co">#&gt;   &lt;fct&gt;               &lt;int&gt;        [a]      [a]     [a]     [a]     [a]     [a]</span>
@@ -541,7 +541,7 @@
 <span class="co">#&gt; 7 3150                  500   113617.5      0.1     6.4    17.1    86.5 13668.2</span>
 <span class="co">#&gt; 8 3160                  297    25137.0      0.1     6.4    21.8    64.3  4179.1</span>
 <span class="co">#&gt; 9 rbbah                 528    40830.2      0.1     4.2    12.8    55.2  3748.6</span></code></pre></div>
-<p>An strong point of <code>sf</code> objects is that the geometry has explicit units. Consequently we can make use of tools like <code><a href="https://rdrr.io/pkg/units/man/set_units.html">set_units()</a></code> to convert units (e.g. surface area as <em>are</em> (a)).</p>
+<p>An strong point of <code>sf</code> objects is that the geometry has explicit units. Consequently we can make use of tools like <code><a href="https://rdrr.io/pkg/units/man/units.html">set_units()</a></code> to convert units (e.g. surface area as <em>are</em> (a)).</p>
 <p>Because the main type code <code>3130</code> will mostly boil down to <code>3130_aom</code> in the field, a further interpreted flavour can be generated with <code><a href="../reference/read_watersurfaces_hab.html">read_watersurfaces_hab(interpreted = TRUE)</a></code>.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/read_watersurfaces_hab.html">read_watersurfaces_hab</a></span><span class="op">(</span>interpreted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
