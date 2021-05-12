@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Climb up in the file system hierarchy to find a file or folder — fileman_up • n2khab</title>
+<title>Return the data source raster_runif as a RasterLayer — read_raster_runif • n2khab</title>
 
 
 <!-- jquery -->
@@ -41,11 +41,17 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Climb up in the file system hierarchy to find a file or folder — fileman_up" />
-<meta property="og:description" content="Searches for a specific file or folder, starting from the start
-directory and sequentially climbing up one directory level at a time.
-The first match causes this sequence to stop
-and the full path will be returned." />
+<meta property="og:title" content="Return the data source raster_runif as a RasterLayer — read_raster_runif" />
+<meta property="og:description" content="The raster_runif data source covers Flanders and the Brussels
+Capital Region
+and has a resolution of 32 meters.
+The raster cells with non-missing values match the value-cells of
+the GRTSmaster_habitats data source (see read_GRTSmh)
+with a small buffer added.
+Every raster cell has a random value between 0 and 1 according to the
+uniform distribution.
+The coordinate reference system is 'Belge 72 / Belgian Lambert 72'
+(EPSG-code 31370)." />
 
 
 
@@ -140,59 +146,70 @@ and the full path will be returned." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Climb up in the file system hierarchy to find a file or folder</h1>
-    <small class="dont-index">Source: <a href='https://github.com/inbo/n2khab/blob/master/R/filemanagement.R'><code>R/filemanagement.R</code></a></small>
-    <div class="hidden name"><code>fileman_up.Rd</code></div>
+    <h1>Return the data source <code>raster_runif</code> as a RasterLayer</h1>
+    <small class="dont-index">Source: <a href='https://github.com/inbo/n2khab/blob/master/R/read_raster_runif.R'><code>R/read_raster_runif.R</code></a></small>
+    <div class="hidden name"><code>read_raster_runif.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Searches for a specific file or folder, starting from the <code>start</code>
-directory and sequentially climbing up one directory level at a time.
-The first match causes this sequence to stop
-and the full path will be returned.</p>
+    <p>The <code>raster_runif</code> data source covers Flanders and the Brussels
+Capital Region
+and has a resolution of 32 meters.
+The raster cells with non-missing values match the value-cells of
+the <code>GRTSmaster_habitats</code> data source (see <code><a href='read_GRTSmh.html'>read_GRTSmh</a></code>)
+with a small buffer added.
+Every raster cell has a random value between 0 and 1 according to the
+uniform distribution.
+The coordinate reference system is 'Belge 72 / Belgian Lambert 72'
+(EPSG-code <a href='https://epsg.io/31370'>31370</a>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fileman_up</span><span class='op'>(</span><span class='va'>name</span>, start <span class='op'>=</span> <span class='st'>"."</span>, levels <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_raster_runif</span><span class='op'>(</span>
+  file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='fileman_up.html'>fileman_up</a></span><span class='op'>(</span><span class='st'>"n2khab_data"</span><span class='op'>)</span>, <span class='st'>"10_raw/raster_runif/raster_runif.tif"</span><span class='op'>)</span>,
+  version <span class='op'>=</span> <span class='st'>"raster_runif_v1"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Name of file or folder to search for.
-An exact match is needed.
-The matching is case sensitive.</p></td>
+      <th>file</th>
+      <td><p>The absolute or relative file path of the data source.
+The default follows the data management advice in the
+vignette on data storage (run <code><a href='../articles/v020_datastorage.html'>vignette("v020_datastorage")</a></code>).
+It uses the first <code>n2khab_data</code> folder that is found when
+sequentially climbing up 0 to 10 levels in the file system hierarchy,
+starting from the working directory.</p></td>
     </tr>
     <tr>
-      <th>start</th>
-      <td><p>String.
-Directory to start searching from.</p></td>
-    </tr>
-    <tr>
-      <th>levels</th>
-      <td><p>Integer.
-How many levels to sequentially climb up in the file hierarchy,
-if the file or folder is not found in the <code>start</code> directory?</p></td>
+      <th>version</th>
+      <td><p>Version ID of the data source.
+Defaults to the latest available version defined by the package.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The path to the specified folder or file (string), or <code>NULL</code> if
-not found.</p>
+    <p>A RasterLayer.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Symbolic links are matched, and in the returned path they are converted.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other functions regarding file management for N2KHAB projects: 
-<code><a href='checksum.html'>checksum</a>()</code>,
-<code><a href='download_zenodo.html'>download_zenodo</a>()</code>,
-<code><a href='fileman_folders.html'>fileman_folders</a>()</code></p></div>
+    <p>The <code>raster_runif</code> data source is a GeoTIFF file (available at
+<a href='https://doi.org/10.5281/zenodo.4745984'>Zenodo</a>).</p>
+<p>The R-code for creating the <code>raster_runif</code> data source can be found in
+the <a href='https://github.com/inbo/n2khab-preprocessing'>
+n2khab-preprocessing</a> repository.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>fileman_up</span><span class='op'>(</span><span class='st'>"n2khab_data"</span><span class='op'>)</span>
+<span class='co'># This example supposes that your working directory or a directory up to 10</span>
+<span class='co'># levels above has</span>
+<span class='co'># the 'n2khab_data' folder AND that the latest version of the</span>
+<span class='co'># 'raster_runif' data source is present in the default subdirectory.</span>
+<span class='co'># In all other cases, this example won't work but at least you can consider</span>
+<span class='co'># what to do.</span>
+<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>read_raster_runif</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>r</span>
+<span class='fu'>raster</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/spplot.html'>spplot</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>
