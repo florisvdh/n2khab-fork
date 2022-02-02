@@ -11,7 +11,6 @@ jobs:
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
-
     strategy:
       fail-fast: false
       matrix:
@@ -38,6 +37,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          cache-version: ${{ secrets.CACHE_VERSION }}
           extra-packages: any::rcmdcheck
           needs: check
 
