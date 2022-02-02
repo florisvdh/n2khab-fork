@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://inbo.github.io/n2khab/404.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/v010_reference_lists.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/v020_datastorage.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/v022_example.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/v025_geospatial_hab.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/articles/v030_GRTSmh.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/authors.html</loc>
+  </url>
+  <url>
     <loc>https://inbo.github.io/n2khab/index.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/news/index.html</loc>
   </url>
   <url>
     <loc>https://inbo.github.io/n2khab/reference/checksum.html</loc>
@@ -35,6 +71,9 @@
   </url>
   <url>
     <loc>https://inbo.github.io/n2khab/reference/human_filesize.html</loc>
+  </url>
+  <url>
+    <loc>https://inbo.github.io/n2khab/reference/index.html</loc>
   </url>
   <url>
     <loc>https://inbo.github.io/n2khab/reference/n2khab-package.html</loc>
@@ -122,20 +161,5 @@
   </url>
   <url>
     <loc>https://inbo.github.io/n2khab/reference/types.html</loc>
-  </url>
-  <url>
-    <loc>https://inbo.github.io/n2khab/articles/v010_reference_lists.html</loc>
-  </url>
-  <url>
-    <loc>https://inbo.github.io/n2khab/articles/v020_datastorage.html</loc>
-  </url>
-  <url>
-    <loc>https://inbo.github.io/n2khab/articles/v022_example.html</loc>
-  </url>
-  <url>
-    <loc>https://inbo.github.io/n2khab/articles/v025_geospatial_hab.html</loc>
-  </url>
-  <url>
-    <loc>https://inbo.github.io/n2khab/articles/v030_GRTSmh.html</loc>
   </url>
 </urlset>
