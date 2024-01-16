@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get data from a Zenodo archive — download_zenodo • n2khab</title>
+<title>Deprecated functions — n2khab-deprecated • n2khab</title>
 
 
 <!-- jquery -->
@@ -41,10 +41,15 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get data from a Zenodo archive — download_zenodo" />
-<meta property="og:description" content="This function will download an entire archive from Zenodo (https://zenodo.org).
-It only works for Zenodo created DOI (not when the DOI is for
-example derived from Zookeys.)" />
+<meta property="og:title" content="Deprecated functions — n2khab-deprecated" />
+<meta property="og:description" content="
+
+read_schemes() has moved to package n2khabmon.
+Use n2khabmon::read_schemes() instead.
+read_scheme_types() has moved to package n2khabmon.
+Use n2khabmon::read_scheme_types() instead.
+
+" />
 
 
 
@@ -139,70 +144,36 @@ example derived from Zookeys.)" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get data from a Zenodo archive</h1>
-    <small class="dont-index">Source: <a href='https://github.com/inbo/n2khab/blob/master/R/filemanagement.R'><code>R/filemanagement.R</code></a></small>
-    <div class="hidden name"><code>download_zenodo.Rd</code></div>
+    <h1>Deprecated functions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/inbo/n2khab/blob/master/R/n2khab-deprecated.R'><code>R/n2khab-deprecated.R</code></a></small>
+    <div class="hidden name"><code>n2khab-deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will download an entire archive from Zenodo (<a href='https://zenodo.org'>https://zenodo.org</a>).
-It only works for Zenodo created DOI (not when the DOI is for
-example derived from Zookeys.)</p>
+    
+<ul>
+<li><p><code>read_schemes()</code> has moved to package <code>n2khabmon</code>.
+Use <code><a href='https://inbo.github.io/n2khabmon/reference/read_schemes.html'>n2khabmon::read_schemes()</a></code> instead.</p></li>
+<li><p><code>read_scheme_types()</code> has moved to package <code>n2khabmon</code>.
+Use <code><a href='https://inbo.github.io/n2khabmon/reference/read_scheme_types.html'>n2khabmon::read_scheme_types()</a></code> instead.</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span><span class='fu'>download_zenodo</span><span class='op'>(</span><span class='va'>doi</span>, path <span class='op'>=</span> <span class='st'>"."</span>, parallel <span class='op'>=</span> <span class='cn'>TRUE</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span></pre>
+    <pre class="usage"><span><span class='fu'>read_schemes</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>read_scheme_types</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>doi</th>
-      <td><p>a doi pointer to the Zenodo archive starting with '10.5281/zenodo.'. See examples.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>Path where the data must be downloaded.
-Defaults to the working directory.</p></td>
-    </tr>
-    <tr>
-      <th>parallel</th>
-      <td><p>Logical.
-If <code>TRUE</code> (the default), files will be
-downloaded concurrently for multi-file records.
-Of course, the operation is limited by bandwidth and traffic limitations.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>Logical (<code>FALSE</code> by default).
-Do you want to suppress informative messages (not warnings)?</p></td>
+      <th>...</th>
+      <td><p>arguments passed to the new function</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions regarding file management for N2KHAB projects: 
-<code><a href='checksum.html'>checksum</a>()</code>,
-<code><a href='fileman_folders.html'>fileman_folders</a>()</code>,
-<code><a href='fileman_up.html'>fileman_up</a>()</code>,
-<code><a href='locate_n2khab_data.html'>locate_n2khab_data</a>()</code></p></div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Hans Van Calster, <a href='mailto:hans.vancalster@inbo.be'>hans.vancalster@inbo.be</a></p>
-<p>Floris Vanderhaeghe, <a href='mailto:floris.vanderhaeghe@inbo.be'>floris.vanderhaeghe@inbo.be</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span></span>
-<span class='r-in'><span><span class='co'># Example download of an archive containing a single zip</span></span></span>
-<span class='r-in'><span><span class='fu'>download_zenodo</span><span class='op'>(</span>doi <span class='op'>=</span> <span class='st'>"10.5281/zenodo.1283345"</span><span class='op'>)</span></span></span>
-<span class='r-in'><span><span class='fu'>download_zenodo</span><span class='op'>(</span>doi <span class='op'>=</span> <span class='st'>"10.5281/zenodo.1283345"</span>, quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></span>
-<span class='r-in'><span><span class='co'># Example download of an archive containing multiple files</span></span></span>
-<span class='r-in'><span><span class='co'># using parallel download</span></span></span>
-<span class='r-in'><span><span class='co'># (multiple files will be simultaneously downloaded)</span></span></span>
-<span class='r-in'><span><span class='fu'>download_zenodo</span><span class='op'>(</span>doi <span class='op'>=</span> <span class='st'>"10.5281/zenodo.1172801"</span>, parallel <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></span>
-<span class='r-in'><span><span class='co'># Example download of an archive containing a single pdf file</span></span></span>
-<span class='r-in'><span><span class='fu'>download_zenodo</span><span class='op'>(</span>doi <span class='op'>=</span> <span class='st'>"10.5281/zenodo.168478"</span><span class='op'>)</span></span></span>
-<span class='r-in'><span><span class='op'>}</span></span></span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

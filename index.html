@@ -23,8 +23,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,17 +35,23 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">n2khab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.10.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -76,7 +80,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/inbo/n2khab/" class="external-link">
+  <a href="https://github.com/inbo/n2khab/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -95,141 +99,161 @@
   <div class="contents col-md-9">
 
 
-<div class="section level2">
-<h2 id="welcome">Welcome<a class="anchor" aria-label="anchor" href="#welcome"></a>
-</h2>
-<p>The <strong>n2khab</strong> R package provides preprocessing functions and standard reference data, supporting <em>reproducible</em> and <em>transparent</em> analyses on Flemish Natura 2000 (<strong>n2k</strong>) habitats (<strong>hab</strong>) and regionally important biotopes (RIBs).</p>
-<p>The package’s core aim is to <strong>provide readily standardized (preprocessed) data</strong> in your R environment. This facilitates collaboration and reproducibility.</p>
-<p>The standard reference data include: checklists, spatial habitat distribution, administrative &amp; environmental layers, GRTSmaster_habitats.</p>
+<div id="welcome" class="section level2">
+<h2 class="hasAnchor">
+<a href="#welcome" class="anchor"></a>Welcome</h2>
+<p>The <strong>n2khab</strong> R package provides preprocessing
+functions and standard reference data, supporting <em>reproducible</em>
+and <em>transparent</em> analyses on Flemish Natura 2000
+(<strong>n2k</strong>) habitats (<strong>hab</strong>) and regionally
+important biotopes (RIBs).</p>
+<p>The package’s core aim is to <strong>provide readily standardized
+(preprocessed) data</strong> in your R environment. This facilitates
+collaboration and reproducibility.</p>
+<p>The standard reference data include: checklists, spatial habitat
+distribution, administrative &amp; environmental layers,
+GRTSmaster_habitats.</p>
 </div>
-<div class="section level2">
-<h2 id="installing-and-using-the-n2khab-package">Installing and using the <em>n2khab</em> package<a class="anchor" aria-label="anchor" href="#installing-and-using-the-n2khab-package"></a>
-</h2>
-<p>To install, run:</p>
+<div id="installing-and-using-the-n2khab-package" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-and-using-the-n2khab-package" class="anchor"></a>Installing and using the <em>n2khab</em> package</h2>
+<p>To install the current package version from the <code>main</code>
+branch (latest stable release), run:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>R_REMOTES_NO_ERRORS_FROM_WARNINGS <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span> <span class="co"># as a precaution</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"inbo/n2khab"</span>,
-                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,
-                        upgrade <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>Note that this will install the package from the <code>master</code> branch. If you need a version from another branch, add the <code>ref</code> argument in the above function to provide the branch name.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"n2khab"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>inbo <span class="op">=</span> <span class="st">"https://inbo.r-universe.dev"</span>, </span>
+<span>                                     CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>The above provides a pre-compiled package for Windows and macOS,
+which should be faster than below approach. INBO staff should have the
+INBO repository enabled already (check with
+<code>getOption("repos")</code>), in which case
+<strong><code>install.packages("n2khab")</code></strong> is all you
+need!</p>
+<p>If you want to install from the source repository, run:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>R_REMOTES_NO_ERRORS_FROM_WARNINGS <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span> <span class="co"># as a precaution</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"inbo/n2khab"</span>,</span>
+<span>                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                        upgrade <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>Note that this will install the package from the <code>main</code>
+branch. If you need a version from another branch, add the
+<code>ref</code> argument in the above function to provide the branch
+name.</p>
 <p>Repeat the installation when you wish to upgrade.</p>
 <p>Have a look at the vignettes to quickly find your way!</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html" class="external-link">help</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"n2khab"</span><span class="op">)</span>
-<span class="co"># vignettes only: browseVignettes("n2khab")</span>
-<span class="co"># documentation of whole package: package?n2khab</span></code></pre></div>
-<div class="section level3">
-<h3 id="data-setup">Data setup<a class="anchor" aria-label="anchor" href="#data-setup"></a>
-</h3>
-<p>Please take note that you must set up the needed data sources as explained in <code><a href="articles/v020_datastorage.html">vignette("v020_datastorage")</a></code> and demonstrated in <code><a href="articles/v022_example.html">vignette("v022_example")</a></code>. There is a major distinction between:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"n2khab"</span><span class="op">)</span></span>
+<span><span class="co"># vignettes only: browseVignettes("n2khab")</span></span>
+<span><span class="co"># documentation of whole package: package?n2khab</span></span></code></pre></div>
+<div id="data-setup" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-setup" class="anchor"></a>Data setup</h3>
+<p>Please take note that you must set up the needed data sources as
+explained in <code><a href="articles/v020_datastorage.html">vignette("v020_datastorage")</a></code> and demonstrated
+in <code><a href="articles/v022_example.html">vignette("v022_example")</a></code>. There is a major distinction
+between:</p>
 <ul>
 <li>
-<strong>raw data</strong> (<a href="https://zenodo.org/communities/n2khab-data-raw" class="external-link">Zenodo-link</a>), to be stored in a folder <code>n2khab_data/10_raw</code>;</li>
+<strong>raw data</strong> (<a href="https://zenodo.org/communities/n2khab-data-raw">Zenodo-link</a>),
+to be stored in a folder <code>n2khab_data/10_raw</code>;</li>
 <li>
-<strong>processed data</strong> (<a href="https://zenodo.org/communities/n2khab-data-processed" class="external-link">Zenodo-link</a>), to be stored in a folder <code>n2khab_data/20_processed</code>.</li>
+<strong>processed data</strong> (<a href="https://zenodo.org/communities/n2khab-data-processed">Zenodo-link</a>),
+to be stored in a folder <code>n2khab_data/20_processed</code>.</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="suppressing-rgdal-warnings-about-proj4string-degradation">Suppressing <code>rgdal</code> warnings about proj4string degradation<a class="anchor" aria-label="anchor" href="#suppressing-rgdal-warnings-about-proj4string-degradation"></a>
-</h3>
-<p>Setting coordinate reference systems (CRS) of geospatial R objects is taken care of by the package, in a way that is compatible with older and current versions of PROJ and GDAL backend libraries. This is done by gratefully implementing such features from the <code>sf</code> and <code>sp</code> packages. The functions never specify a CRS by means of a proj4string, which is an aged format not supported by the current backend versions.</p>
-<p>Please note that nonetheless you will see warnings about degraded proj4strings when using certain <code>n2khab</code> functions or when converting resulting <code>sf</code> objects to <code>sp</code> objects. This is normal! It is the current default behaviour of <code>rgdal</code> to yield these warnings. However in the case of <code>n2khab</code> functions and resulting objects these warnings are trivial and unnecessary. You can suppress them in your R scripts by inserting below statement <em>before</em> loading geospatial packages:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>rgdal_show_exportToProj4_warnings <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
-<p>See <a href="https://inbo.github.io/tutorials/tutorials/spatial_crs_coding/" class="external-link">this</a> tutorial if you would like to learn more about this. In short: <em>don’t</em> use proj4strings to define CRSs!</p>
 </div>
-</div>
-<div class="section level2">
-<h2 id="you-are-welcome-to-contribute">You are welcome to contribute!<a class="anchor" aria-label="anchor" href="#you-are-welcome-to-contribute"></a>
-</h2>
+<div id="you-are-welcome-to-contribute" class="section level2">
+<h2 class="hasAnchor">
+<a href="#you-are-welcome-to-contribute" class="anchor"></a>You are welcome to contribute!</h2>
 <p>Please have a look at our <a href="CONTRIBUTING.html">contributing guide</a>!</p>
 </div>
-<div class="section level2">
-<h2 id="intention-for-the-future">Intention for the future<a class="anchor" aria-label="anchor" href="#intention-for-the-future"></a>
-</h2>
-<p>At a later date, the intention is to incorporate functionality to enhance workflow reproducibility and ease the setup:</p>
+<div id="intention-for-the-future" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intention-for-the-future" class="anchor"></a>Intention for the future</h2>
+<p>At a later date, the intention is to incorporate functionality to
+enhance workflow reproducibility and ease the setup:</p>
 <ul>
-<li>let a user declare which versions of which data sources are used in an R workflow (at the beginning of a script or R markdown file);</li>
-<li>perform checks whether the needed versions of those data sources are locally present;</li>
-<li>if missing, download the needed data from the Zenodo collections.</li>
+<li>let a user declare which versions of which data sources are used in
+an R workflow (at the beginning of a script or R markdown file);</li>
+<li>perform checks whether the needed versions of those data sources are
+locally present;</li>
+<li>if missing, download the needed data from the Zenodo
+collections.</li>
 </ul>
-<p>Currently these aspects must be taken care of in a more manual fashion. See <code><a href="articles/v022_example.html">vignette("v022_example")</a></code> for example code to currently accomplish specific aspects.</p>
+<p>Currently these aspects must be taken care of in a more manual
+fashion. See <code><a href="articles/v022_example.html">vignette("v022_example")</a></code> for example code to
+currently accomplish specific aspects.</p>
 </div>
-<div class="section level2">
-<h2 id="background-information">Background information<a class="anchor" aria-label="anchor" href="#background-information"></a>
-</h2>
-<p>From its aim, it follows that the package supports various <em>N2KHAB</em> projects, i.e. projects that focus on Natura 2000 habitat (and which may as well use the <em>n2khab</em>-prefix for their git repository name, such as <a href="https://github.com/inbo/n2khab-monitoring" class="external-link">this one</a>).</p>
-<p>The package is a companion to the <a href="https://github.com/inbo/n2khab-preprocessing" class="external-link">n2khab-preprocessing</a> repo. Beside direct preprocessing functions, <strong>n2khab</strong> provides several functions that return datasets, generated in <code>n2khab-preprocessing</code>, as standardized R-objects. Having processed datasets readily available is useful in the case of time-consuming calculations to produce them.</p>
-<p>The data definitions &amp; standard checklists (reference data) provided by the package are textual files in the <a href="https://ropensci.github.io/git2rdata/index.html" class="external-link">vc-format</a>. Some of them come over from another repository. Others may be written as the result of a synchronization script to give them a start. The code to reproduce these files is inside the <code>misc</code> folder of the <a href="https://github.com/inbo/n2khab" class="external-link">source code</a>. The package provides the necessary functions to return these as standardized tibbles (<code><a href="articles/v010_reference_lists.html">vignette("v010_reference_lists")</a></code>).</p>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the n2khab package is released with a <a href="https://inbo.github.io/n2khab/CODE_OF_CONDUCT.html">Contributor
+Code of Conduct</a>. By contributing to this project, you agree to abide
+by its terms.</p>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2 data-toc-skip>Links</h2>
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/inbo/n2khab/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/inbo/n2khab/issues" class="external-link">Report a bug</a></li>
+<li>Browse source code at <br><a href="https://github.com/inbo/n2khab/">https://​github.com/​inbo/​n2khab/​</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/inbo/n2khab/issues">https://​github.com/​inbo/​n2khab/​issues</a>
+</li>
 </ul>
 </div>
-
 <div class="license">
-<h2 data-toc-skip>License</h2>
+<h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
 </ul>
 </div>
-
 <div class="community">
-<h2 data-toc-skip>Community</h2>
+<h2>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-
 <div class="citation">
-<h2 data-toc-skip>Citation</h2>
+<h2>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing n2khab</a></li>
+<li><a href="authors.html">Citing n2khab</a></li>
 </ul>
 </div>
-
 <div class="developers">
-<h2 data-toc-skip>Developers</h2>
+<h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Floris Vanderhaeghe <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6378-6229" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Toon Westra <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2478-9459" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Cécile Herr <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-2833-6046" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Hans Van Calster <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8595-8426" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">More about authors...</a></li>
+<li>Floris Vanderhaeghe <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6378-6229" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Toon Westra <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2478-9459" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Cécile Herr <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-2833-6046" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Hans Van Calster <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8595-8426" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
+  <div class="dev-status">
+<h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://doi.org/10.5281/zenodo.3631579" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3631579.svg" alt="DOI"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/inbo/n2khab/actions?query=workflow%3AR-CMD-check" class="external-link"><img src="https://github.com/inbo/n2khab/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://github.com/inbo/n2khab/actions?query=workflow%3Asite-devel" class="external-link"><img src="https://github.com/inbo/n2khab/workflows/site-devel/badge.svg" alt="site-devel"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.3631579"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3631579.svg" alt="DOI"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://github.com/inbo/n2khab/actions?query=workflow%3AR-CMD-check"><img src="https://github.com/inbo/n2khab/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://inbo.r-universe.dev"><img src="https://inbo.r-universe.dev/badges/:name?color=c04384" alt="inbo r-universe-name"></a></li>
+<li><a href="https://inbo.r-universe.dev"><img src="https://inbo.r-universe.dev/badges/n2khab" alt="inbo r-universe package status"></a></li>
 </ul>
 </div>
-
-  </div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Floris Vanderhaeghe, Toon Westra, Cécile Herr, Hans Van Calster.</p>
+  <p>Developed by Floris Vanderhaeghe, Toon Westra, Cécile Herr, Hans Van Calster.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -237,8 +261,6 @@
 
   
 
-
-  
 
   </body>
 </html>
